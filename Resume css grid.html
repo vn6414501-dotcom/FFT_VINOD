@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vinod Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #c1b8a6;
+            color: black;
+        }
+
+        header {
+            background-color: antiquewhite;
+            text-align: center;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+        }
+
+        header h1 {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            list-style-type: none;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+        }
+
+        ul li a:hover {
+            color: rgb(180, 166, 148);
+        }
+        section {
+            min-height: 400px;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: darkorange;
+        }
+
+        #hero {
+            background-color: #ffe8c2;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #hero h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        #hero p {
+            font-size: 20px;
+        }
+
+        #about {
+            background-color: white;
+        }
+
+        #about p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.8;
+            font-size: 18px;
+        }
+
+
+        #skills {
+            background-color: #9e9383;
+        }
+
+        .skills-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .skill {
+            background-color: white;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px gray;
+        }
+
+        #projects {
+            background-color: rgb(161, 127, 127);
+        }
+
+        .project-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project {
+            width: 280px;
+            padding: 25px;
+            background-color: #fff1dc;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px gray;
+        }
+
+        .project h3 {
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            line-height: 1.5;
+        }
+
+        #contact {
+            background-color: #ffe8c2;
+        }
+
+        .contact-info {
+            margin-top: 25px;
+            line-height: 2;
+            font-size: 18px;
+        }
+
+        .contact-info a {
+            color: darkorange;
+            text-decoration: none;
+        }
+
+        footer {
+            background-color: antiquewhite;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            ul {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            #hero h1 {
+                font-size: 32px;
+            }
+
+            .project {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Vinod Portfolio</h1>
+
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <h1>Hello! I am Vinod</h1>
+        <p>Welcome to my personal portfolio</p>
+        <p>I am a MCA student interested in technology and programming.</p>
+    </section>
+
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+
+        <p>
+            Hello! I am Vinod, a BCA student who is passionate about
+            technology, programming and web development. I enjoy learning
+            new technologies and creating useful projects. I am interested
+            in developing my technical skills and building creative
+            solutions to real-world problems.
+        </p>
+    </section>
+
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2>My Skills</h2>
+
+        <div class="skills-container">
+
+            <div class="skill">
+                <h3>HTML</h3>
+                <p>Web Page Structure</p>
+            </div>
+
+            <div class="skill">
+                <h3>CSS</h3>
+                <p>Web Page Styling</p>
+            </div>
+
+            <div class="skill">
+                <h3>Python</h3>
+                <p>Programming & Data Science</p>
+            </div>
+
+            <div class="skill">
+                <h3>Gen AI</h3>
+                <p>website building</p>
+            </div>
+
+            <div class="skill">
+                <h3>Digital Marketing</h3>
+                <p>Video editing, poster making</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2>My Projects</h2>
+
+        <div class="project-container">
+
+            <div class="project">
+                <h3>Homebee</h3>
+                <p>
+                    A home service website that helps users find and
+                    book different home services such as cleaning,
+                    plumbing, electrical services and more.
+                </p>
+            </div>
+
+            <div class="project">
+                <h3>Webzer</h3>
+                <p>
+                    A website analysis project that helps analyze
+                    website performance and provides useful insights.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact">
+        <h2>Contact Me</h2>
+
+        <div class="contact-info">
+            <p>Email:
+                <a href="mailto:vn6414501@gmail.com">
+                    vn6414501@gmail.com
+                </a>
+            </p>
+
+            <p>Phone: +91 6360312182</p>
+
+            <p>
+                GitHub:
+                <a href="#">@vn6414501</a>
+            </p>
+        </div>
+    </section>
+
+
+</body>
+</html>
