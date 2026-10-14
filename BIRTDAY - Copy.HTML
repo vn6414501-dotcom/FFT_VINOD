@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Birthday Card</title>
+
+    <style>
+
+        body {
+            background-color: lightblue;
+            font-family: Arial;
+            text-align: center;
+        }
+
+        div {
+            border: 1px solid black;
+            width: 400px;
+            margin: 60px auto;
+            padding: 25px;
+            border-radius: 20px;
+            background-color: white;
+            box-shadow: 4px 6px 10px grey;
+
+            animation: card 2s ease;
+
+        
+            transition: 0.5s;
+        }
+
+       
+
+        div:hover {
+            transform: scale(1.03);
+            box-shadow: 6px 8px 15px grey;
+        }
+
+
+
+        h1 {
+            color: blue;
+
+            animation: heading 2s ease alternate infinite;
+        }
+
+
+      
+
+        img {
+            width: 180px;
+            height: 180px;
+
+            object-fit: contain;
+
+            border-radius: 50%;
+            border: 4px solid blue;
+            margin: auto;
+
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+
+        h2 {
+            color: darkblue;
+        }
+
+
+        p {
+            font-size: 17px;
+            color: rgb(69, 68, 68);
+            line-height: 1.6;
+        }
+
+
+       
+
+        .bio {
+            border: none;
+            width: auto;
+            margin: 20px 0;
+            padding: 15px;
+
+            background-color: lightcyan;
+
+            box-shadow: none;
+
+            animation: none;
+        }
+
+        .bio:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+
+        .bio h3 {
+            color: blue;
+            font-size: 22px;
+        }
+
+
+        /* Card Animation */
+
+        @keyframes card {
+
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        /* Heading Animation */
+
+        @keyframes heading {
+
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.1);
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div>
+
+
+      
+
+        <img src="./pngfind.com-krishna-flute-png-346615.png">
+
+
+        <h1>Happy Birthday to Me</h1>
+
+
+        <p>
+            Today marks the beginning of another beautiful
+            chapter of my life.
+        </p>
+
+
+
+
+        <section class="bio">
+
+            <h3>About Me</h3>
+
+
+            <p>
+                Hello! I am VINOD HIMAKAR NAIK.
+                I am a passionate learner who enjoys
+                technology, programming and exploring
+                new ideas.
+            </p>
+
+
+            <p>
+                I believe that every year brings new
+                opportunities to learn, grow and create
+                beautiful memories.
+            </p>
+
+
+            <p>
+                Date of Birth: 22nd August 2005
+            </p>
+
+        </section>
+
+
+        <p>
+            Here's to a new year filled with happiness,
+            success, growth and unforgettable memories.
+        </p>
+
+
+    </div>
+
+</body>
+
+</html>        

@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <title>To Do List</title>
+        <style>
+            body {
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                background: rgb(255, 184, 129);
+                display: flex;
+                justify-content: center;
+                margin-top: 80px;
+            }
+            .i1 {
+                background: rgb(241, 237, 237);
+                padding: 30px;
+                border-radius: 50px;
+                box-shadow: 0px 4px 8px rgb(232, 98, 114);
+                width: 400px;
+            }
+            .i2 {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+            input[type="text"] {
+                flex: 1;
+                padding: 8px;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+            .completed span {
+                text-decoration: line-through;
+                color: #f80000;
+            }
+            .filters, .footer {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 15px;
+                font-size: 14px;
+            }
+            button {
+                cursor: pointer;
+                height: 30px;
+                color: rgb(11, 11, 251);
+                background: rgb(0, 0, 0);
+                border-radius: 30px;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="i1">
+            <h2>To Do List</h2>
+
+            <div class="i2">
+                <input type="text" id="a1" placeholder="What needs to be done?">
+                <!-- Fixed: Changed addbtn to addBtn -->
+                <button id="addBtn">Add Task</button>
+            </div>
+
+            <div class="i3">
+                <button onclick="setFilter('all')" >All</button>
+                <button onclick="setFilter('pending')">Pending</button>
+
+                <button onclick="setFilter('completed')">Completed</button>
+            </div>
+
+            <ul id="a2"></ul>
+                
+            <div class="footer">
+                <span id="a3">0 tasks pending</span>
+
+                <button id="clearBtn">Clear Completed</button>
+            </div>
+            
+        </div>
+
+        <script>
+            let tasks = []; 
+            let currentFilter = 'all';
+            
+            const taskInput = document.getElementById('a1');
+            const taskList = document.getElementById('a2');
+            const taskCount = document.getElementById('a3');
+
+            function loadTasks() {
+                const savedTasks = localStorage.getItem('todo-tasks');
+                if (savedTasks) {
+                    tasks = JSON.parse(savedTasks); 
+                }
+                renderTasks(); 
+            }
+
+            function saveTasks() {
+                localStorage.setItem('todo-tasks', JSON.stringify(tasks));
+            }
+
+            document.getElementById('addBtn').addEventListener('click', function() {
+
+                const text = taskInput.value.trim(); 
+                if (text === '') return;
+                
+                const newTask = {
+                    id: Date.now(), 
+                    text: text,
+                    completed: false
+                };
+
+                tasks.push(newTask); 
+
+                taskInput.value = '';
+                
+                saveTasks();
+                renderTasks();
+            });
+
+            function renderTasks() {
+
+                taskList.innerHTML = ''; 
+                let pendingCount = 0;
+
+                tasks.forEach(function(task) {
+                    if (!task.completed) {
+                        pendingCount++;
+                    }
+
+                    if (currentFilter === 'pending' && task.completed) return;
+                    if (currentFilter === 'completed' && !task.completed) return;
+
+                    const li = document.createElement('li');
+                    if (task.completed) {
+                        li.classList.add('completed');
+                    }
+
+                    li.innerHTML = `
+                        <div>
+                            <input type="checkbox" ${task.completed ? 'checked' : ''} onchange="toggleTask(${task.id})">
+                            <span>${task.text}</span>
+                        </div>
+                        <div>
+                            <button onclick="editTask(${task.id})">Edit</button>
+                            <button onclick="deleteTask(${task.id})">Delete</button>
+                        </div>
+                    `;
+                    
+                    taskList.appendChild(li);
+                });
+
+                taskCount.innerText = `${pendingCount} tasks pending`;
+            }
+            
+            function toggleTask(id) {
+                const task = tasks.find(t => t.id === id);
+                task.completed = !task.completed;
+                
+                saveTasks();
+                renderTasks();
+            }
+
+            function deleteTask(id) {
+                tasks = tasks.filter(t => t.id !== id);
+                
+                saveTasks();
+                renderTasks();
+            }
+
+            function editTask(id) {
+                const task = tasks.find(t => t.id === id);
+                const newText = prompt("Edit your task:", task.text);
+                
+                if (newText !== null && newText.trim() !== "") {
+                    task.text = newText.trim();
+                    saveTasks();
+                    renderTasks();
+                }
+            }
+
+            function setFilter(filterType) {
+                currentFilter = filterType;
+                renderTasks();
+            }
+
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                tasks = tasks.filter(t => t.completed === false);
+                saveTasks();
+                renderTasks();
+            });
+
+            loadTasks();
+        </script>
+    </body>
+</html>
